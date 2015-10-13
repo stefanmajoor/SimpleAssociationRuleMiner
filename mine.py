@@ -1,5 +1,6 @@
 from Tkinter import *
 from sets import Set
+import math
 
 class App:
     def __init__(self, master):
@@ -79,8 +80,12 @@ class App:
 
 
         print "====="
+
+        i = 0
+
         for m in matchSet:
-            print m
+            Label(self.master, text=str(m)).grid(row=50 + (i/5), column=i%5*2+1, columnspan = 2)
+            i+=1
 
 
     def getMatches(self, wordsChecked, words, rows, sup, conf, sort):
@@ -137,9 +142,6 @@ class App:
         allWords = rows
         for w in wordsChecked:
             allWords = allWords & words[w]
-
-        print wordsChecked, len(allWords) * float(100) / len(rows)
-
         return len(allWords) * float(100) / len(rows)
 
 
